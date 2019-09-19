@@ -80,7 +80,7 @@ export TEMPORARY_DISABLE_PATH_RESTRICTIONS
 endif
 
 VENDOR_QTI_PLATFORM := msmnile
-VENDOR_QTI_DEVICE := qssi
+VENDOR_QTI_DEVICE := qssi_32
 
 #QSSI configuration
 #Single system image project structure
@@ -89,7 +89,7 @@ TARGET_USES_QSSI := true
 ENABLE_AB ?= true
 
 TARGET_DEFINES_DALVIK_HEAP := true
-$(call inherit-product, device/qcom/qssi/common64.mk)
+$(call inherit-product, device/qcom/qssi_32/common.mk)
 
 #Inherit all except heap growth limit from phone-xhdpi-2048-dalvik-heap.mk
 PRODUCT_PROPERTY_OVERRIDES  += \
