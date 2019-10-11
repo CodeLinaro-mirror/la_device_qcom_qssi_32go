@@ -80,7 +80,7 @@ KERNEL_DEFCONFIG := sdm845_defconfig
 ifeq ($(wildcard $(KERN_CONF_PATH)/$(KERNEL_DEFCONFIG)),)
 KERNEL_DEFCONFIG := $(shell ls $(KERN_CONF_PATH)/vendor | grep sm8..._defconfig)
 ifeq ($(KERNEL_DEFCONFIG),)
-KERNEL_DEFCONFIG := kona_defconfig
+KERNEL_DEFCONFIG := bengal_defconfig
 endif
 KERNEL_DEFCONFIG := vendor/$(KERNEL_DEFCONFIG)
 endif
@@ -97,9 +97,8 @@ BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET     := 0x02000000
 
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(shell pwd)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-androidkernel-
+TARGET_KERNEL_ARCH := arm
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(shell pwd)/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin/arm-linux-androidkernel-
 
 KERNEL_UNCOMPRESSED_DEFCONFIG := $(shell grep "CONFIG_BUILD_ARM64_UNCOMPRESSED_KERNEL=y" $(KERN_CONF_PATH)/$(KERNEL_DEFCONFIG))
 ifeq ($(KERNEL_UNCOMPRESSED_DEFCONFIG),)
