@@ -41,10 +41,10 @@ endif
 
 # whitelisted app
 PRODUCT_COPY_FILES += \
-    device/qcom/qssi_32/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
+    device/qcom/common/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
 
 PRODUCT_COPY_FILES += \
-    device/qcom/qssi_32/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
+    device/qcom/common/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
 
 # Ipsec_tunnels feature
 PRODUCT_COPY_FILES += \
@@ -56,7 +56,7 @@ PRODUCT_COPY_FILES += $(QCPATH)/commonsys-intf/telephony/build/telephony_product
 # Permission for Wi-Fi passpoint support
 PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml
 
-PRODUCT_PRIVATE_KEY := device/qcom/qssi_32/qcom.key
+PRODUCT_PRIVATE_KEY := device/qcom/common/qcom.key
 PRODUCT_PACKAGES += qcril.db
 
 ifneq ($(TARGET_DEFINES_DALVIK_HEAP), true)
