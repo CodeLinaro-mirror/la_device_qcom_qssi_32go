@@ -75,10 +75,16 @@ BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 #----------------------------------------------------------------------
 # Compile Linux Kernel
 #----------------------------------------------------------------------
-KERN_CONF_PATH := kernel/msm-$(TARGET_KERNEL_VERSION)/arch/arm64/configs
-KERNEL_DEFCONFIG := sdm845_defconfig
+KERN_CONF_PATH := kernel/msm-$(TARGET_KERNEL_VERSION)/arch/arm/configs
+KERNEL_DEFCONFIG := bengal_defconfig
 ifeq ($(wildcard $(KERN_CONF_PATH)/$(KERNEL_DEFCONFIG)),)
 KERNEL_DEFCONFIG := $(shell ls $(KERN_CONF_PATH)/vendor | grep sm8..._defconfig)
+ifeq ($(KERNEL_DEFCONFIG),)
+KERNEL_DEFCONFIG := $(shell ls $(KERN_CONF_PATH)/vendor | grep bengal_defconfig)
+endif
+ifeq ($(KERNEL_DEFCONFIG),)
+KERNEL_DEFCONFIG := $(shell ls $(KERN_CONF_PATH)/vendor | grep trinket_defconfig)
+endif
 ifeq ($(KERNEL_DEFCONFIG),)
 KERNEL_DEFCONFIG := bengal_defconfig
 endif
