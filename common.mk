@@ -1,4 +1,4 @@
-$(call inherit-product, device/qcom/qssi_32/base.mk)
+$(call inherit-product, device/qcom/qssi_32go/base.mk)
 
 # For PRODUCT_COPY_FILES, the first instance takes precedence.
 # Since we want use QC specific files, we should inherit
