@@ -813,7 +813,7 @@ PRODUCT_PACKAGES := \
     SnapdragonLauncher
 
 ifeq ($(TARGET_HAS_LOW_RAM),true)
-    DELAUN := Launcher3Go
+    DELAUN := Launcher3GoIconRecents
 else
     # Live Wallpapers
     PRODUCT_PACKAGES += \
@@ -1003,13 +1003,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level-1.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute-0.xml
-endif
-
-ifneq ($(strip $(TARGET_USES_RRO)),true)
-# enable overlays to use our version of
-# source/resources etc.
-DEVICE_PACKAGE_OVERLAYS += device/qcom/common/device/overlay
-PRODUCT_PACKAGE_OVERLAYS += device/qcom/common/product/overlay
 endif
 
 # Set up flags to determine the kernel version

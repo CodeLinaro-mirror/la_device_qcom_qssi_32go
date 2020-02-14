@@ -15,6 +15,27 @@ TARGET_SKIP_OTA_PACKAGE := true
 # Enable AVB 2.0
 BOARD_AVB_ENABLE := true
 
+##############################Go configs###########################################
+#Go variant flag
+TARGET_HAS_LOW_RAM := true
+
+TARGET_SYSTEM_PROP := device/qcom/qssi_32go/system.prop
+
+# Enable DM file preopting to reduce first boot time
+PRODUCT_DEX_PREOPT_GENERATE_DM_FILES := true
+PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
+
+DONT_UNCOMPRESS_PRIV_APPS_DEXS := true
+
+$(call inherit-product, build/target/product/go_defaults.mk)
+$(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackageGo.mk)
+
+DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go
+
+PRODUCT_PACKAGES += \
+    android.hardware.cas@1.1-service-lazy
+#########################End of Go configs########################################
+
 #### Dynamic Partition Handling
 
 ####
@@ -103,15 +124,12 @@ PRODUCT_PROPERTY_OVERRIDES  += \
 PRODUCT_NAME := $(VENDOR_QTI_DEVICE)
 PRODUCT_DEVICE := $(VENDOR_QTI_DEVICE)
 PRODUCT_BRAND := qti
-PRODUCT_MODEL := qssi system image for arm64
+PRODUCT_MODEL := qssi go system image for arm
 
 #Initial bringup flags
 TARGET_USES_AOSP := false
 TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
-
-# RRO configuration
-TARGET_USES_RRO := true
 
 TARGET_USES_NQ_NFC := true
 
@@ -181,7 +199,7 @@ PRODUCT_PACKAGES += \
     libhealthd.msm
 
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
-DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/qssi/framework_manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/qssi_32go/framework_manifest.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml
 
 #audio related module
@@ -189,7 +207,6 @@ PRODUCT_PACKAGES += libvolumelistener
 
 # Display/Graphics
 PRODUCT_PACKAGES += \
-    android.hardware.configstore@1.0-service \
     android.hardware.broadcastradio@1.0-impl
 
 # Camera configuration file. Shared by passthrough/binderized camera HAL
@@ -230,16 +247,12 @@ KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTAL
 
 #Exclude vibrator from InputManager
 PRODUCT_COPY_FILES += \
-    device/qcom/qssi/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+    device/qcom/qssi_32go/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
 
 #Enable full treble flag
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
-
-ifneq ($(strip $(TARGET_USES_RRO)),true)
-DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi/overlay
-endif
 
 
 #Enable vndk-sp Libraries
