@@ -30,7 +30,8 @@ DONT_UNCOMPRESS_PRIV_APPS_DEXS := true
 $(call inherit-product, build/target/product/go_defaults.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackageGo.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go
+DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go/device
+PRODUCT_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go/product
 
 PRODUCT_PACKAGES += \
     android.hardware.cas@1.1-service-lazy
