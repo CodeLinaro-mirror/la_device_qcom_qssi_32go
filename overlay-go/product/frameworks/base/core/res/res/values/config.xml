@@ -32,13 +32,9 @@
     <!-- Enable .1x scale snapshots. -->
     <bool name="config_lowRamTaskSnapshotsAndRecents">true</bool>
 
+    <!-- Disable WiFi Debugging -->
     <bool translatable="false" name="config_wifi_enable_wifi_firmware_debugging">false</bool>
     <integer translatable="false" name="config_wifi_logger_ring_buffer_verbose_size_limit_kb">64</integer>
-
-    <!-- True if the device requires AppWidgetService even if it does not have
-         the PackageManager.FEATURE_APP_WIDGETS feature -->
-    <!-- Temporary workaround to fix launcher crash -->
-    <bool name="config_enableAppWidgetService">true</bool>
 
     <!-- ImsService package name to bind to by default. If none is specified in an overlay, an
           empty string is passed in -->
