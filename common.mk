@@ -10,33 +10,8 @@ ifeq ($(TARGET_HAS_LOW_RAM),true)
         keyguard.no_require_sim=true \
         ro.com.android.dataroaming=true
 
-    PRODUCT_PACKAGES += \
-        libfwdlockengine \
-        WAPPushManager \
-        PhotoTable
-
-    # Bluetooth:
-    #   audio.a2dp.default is a system module. Generic system image includes
-    #   audio.a2dp.default to support A2DP if board has the capability.
-    PRODUCT_PACKAGES += \
-        audio.a2dp.default
-
-    # Net:
-    #   Vendors can use the platform-provided network configuration utilities (ip,
-    #   iptable, etc.) to configure the Linux networking stack, but these utilities
-    #   do not yet include a HIDL interface wrapper. This is a solution on
-    #   Android O.
-    PRODUCT_PACKAGES += \
-        netutils-wrapper-1.0
-
-    # Additional settings used in all AOSP builds
-    PRODUCT_PROPERTY_OVERRIDES := \
-        ro.config.ringtone=Ring_Synth_04.ogg \
-        ro.config.notification_sound=pixiedust.ogg
-
-    # Put en_US first in the list, so make it default.
-    PRODUCT_LOCALES := en_US
-
+    $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system.mk)
+    $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
     $(call inherit-product, $(SRC_TARGET_DIR)/product/generic.mk)
     $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 else
@@ -65,23 +40,25 @@ else
 endif
 
 # whitelisted app
-PRODUCT_COPY_FILES += \
-    device/qcom/common/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
 
 PRODUCT_COPY_FILES += \
-    device/qcom/common/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
+    device/qcom/qssi/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
+    device/qcom/qssi/qti_whitelist_system_ext.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/qti_whitelist_system_ext.xml
+
+PRODUCT_COPY_FILES += \
+    device/qcom/qssi/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
+    device/qcom/qssi/privapp-permissions-qti-system-ext.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-qti-system-ext.xml
+
 
 # Ipsec_tunnels feature
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml
 
-#copy telephony app's permissions
-PRODUCT_COPY_FILES += $(QCPATH)/commonsys-intf/telephony/build/telephony_product_privapp-permissions-qti.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/telephony_product_privapp-permissions-qti.xml
 
 # Permission for Wi-Fi passpoint support
 PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml
 
-PRODUCT_PRIVATE_KEY := device/qcom/common/qcom.key
+PRODUCT_PRIVATE_KEY := vendor/qcom/opensource/core-utils/build/qcom.key
 PRODUCT_PACKAGES += qcril.db
 
 ifneq ($(TARGET_DEFINES_DALVIK_HEAP), true)
@@ -92,3 +69,4 @@ endif
 
 #$(call inherit-product, frameworks/base/data/fonts/fonts.mk)
 #$(call inherit-product, frameworks/base/data/keyboards/keyboards.mk)
+
