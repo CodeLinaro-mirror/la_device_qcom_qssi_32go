@@ -42,6 +42,7 @@ QCOM_BOARD_PLATFORMS += kona
 QCOM_BOARD_PLATFORMS += atoll
 QCOM_BOARD_PLATFORMS += lito
 QCOM_BOARD_PLATFORMS += bengal
+QCOM_BOARD_PLATFORMS += scuba
 
 QSD8K_BOARD_PLATFORMS := qsd8k
 
@@ -1086,7 +1087,8 @@ PRODUCT_PACKAGES_DEBUG += \
     init.qti.debug-lito.sh \
     init.qti.debug-atoll.sh \
     init.qti.debug-trinket.sh\
-    init.qti.debug-bengal.sh
+    init.qti.debug-bengal.sh \
+    init.qti.debug-scuba.sh
 
 PRODUCT_PACKAGES += liboemaids_system
 PRODUCT_PACKAGES += liboemaids_vendor
