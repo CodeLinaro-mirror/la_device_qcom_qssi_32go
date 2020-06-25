@@ -3,6 +3,7 @@ META/file_contexts.bin
 META/otakeys.txt
 META/recovery_filesystem_config.txt
 META/releasetools.py
+META/system_matrix.xml
 META/vendor_filesystem_config.txt
 META/vendor_manifest.xml
 META/vendor_matrix.xml
