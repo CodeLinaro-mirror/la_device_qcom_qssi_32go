@@ -2,10 +2,16 @@
 #
 # Product-specific compile-time definitions.
 #
-ifeq ($(TARGET_KERNEL_VERSION),$(filter $(TARGET_KERNEL_VERSION),4.19))
-BUILD_BROKEN_ANDROIDMK_EXPORTS=true
-endif
-BUILD_BROKEN_PHONY_TARGETS=true
+
+BUILD_BROKEN_NINJA_USES_ENV_VARS := SDCLANG_AE_CONFIG SDCLANG_CONFIG SDCLANG_CONFIG_AOSP SDCLANG_SA_ENABLED
+BUILD_BROKEN_NINJA_USES_ENV_VARS += TEMPORARY_DISABLE_PATH_RESTRICTIONS
+BUILD_BROKEN_PREBUILT_ELF_FILES := true
+BUILD_BROKEN_USES_BUILD_HOST_SHARED_LIBRARY := true
+BUILD_BROKEN_USES_BUILD_HOST_EXECUTABLE := true
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
+BUILD_BROKEN_USES_BUILD_HOST_STATIC_LIBRARY := true
+
+ALLOW_MISSING_DEPENDENCIES := true
 
 TARGET_BOARD_PLATFORM := msmnile
 TARGET_BOARD_SUFFIX := _32go
@@ -34,7 +40,7 @@ endif
 
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
-TARGET_NO_KERNEL := false
+TARGET_NO_KERNEL := true
 
 # Disable DLKMs compilation for lunch qssi builds.
 TARGET_KERNEL_DLKM_DISABLE := true
@@ -76,47 +82,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x06000000
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
-#----------------------------------------------------------------------
-# Compile Linux Kernel
-#----------------------------------------------------------------------
-KERN_CONF_PATH := kernel/msm-$(TARGET_KERNEL_VERSION)/arch/arm/configs
-KERNEL_DEFCONFIG := bengal_defconfig
-ifeq ($(wildcard $(KERN_CONF_PATH)/$(KERNEL_DEFCONFIG)),)
-KERNEL_DEFCONFIG := $(shell ls $(KERN_CONF_PATH)/vendor | grep sm8..._defconfig)
-ifeq ($(KERNEL_DEFCONFIG),)
-KERNEL_DEFCONFIG := $(shell ls $(KERN_CONF_PATH)/vendor | grep bengal_defconfig)
-endif
-ifeq ($(KERNEL_DEFCONFIG),)
-KERNEL_DEFCONFIG := $(shell ls $(KERN_CONF_PATH)/vendor | grep trinket_defconfig)
-endif
-ifeq ($(KERNEL_DEFCONFIG),)
-KERNEL_DEFCONFIG := bengal_defconfig
-endif
-KERNEL_DEFCONFIG := vendor/$(KERNEL_DEFCONFIG)
-endif
-
-TARGET_USES_ION := true
-TARGET_USES_NEW_ION_API :=true
-TARGET_USES_QCOM_BSP := false
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0xa90000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
-
-BOARD_EGL_CFG := device/qcom/$(TARGET_BOARD_PLATFORM)/egl.cfg
-
-BOARD_KERNEL_BASE        := 0x00000000
-BOARD_KERNEL_PAGESIZE    := 4096
-BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
-BOARD_RAMDISK_OFFSET     := 0x02000000
-
-TARGET_KERNEL_ARCH := arm
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(shell pwd)/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin/arm-linux-androidkernel-
-
-KERNEL_UNCOMPRESSED_DEFCONFIG := $(shell grep "CONFIG_BUILD_ARM64_UNCOMPRESSED_KERNEL=y" $(KERN_CONF_PATH)/$(KERNEL_DEFCONFIG))
-ifeq ($(KERNEL_UNCOMPRESSED_DEFCONFIG),)
-	TARGET_USES_UNCOMPRESSED_KERNEL := false
-else
-	TARGET_USES_UNCOMPRESSED_KERNEL := true
-endif
-
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
@@ -129,10 +94,8 @@ TARGET_INIT_VENDOR_LIB := libinit_msm
 
 #Disable appended dtb.
 TARGET_KERNEL_APPEND_DTB := false
-TARGET_COMPILE_WITH_MSM_KERNEL := true
 
 #Enable dtb in boot image and boot image header version 2 support.
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 
@@ -153,7 +116,6 @@ ifeq ($(HOST_OS),linux)
     endif
 endif
 
-TARGET_USES_GRALLOC1 := true
 
 # Enable sensor multi HAL
 USE_SENSOR_MULTI_HAL := true
@@ -175,6 +137,9 @@ BOARD_VNDK_VERSION:=current
 Q_BU_DISABLE_MODULE := true
 TARGET_USES_64_BIT_BINDER := true
 
+# Set SYSTEMEXT_SEPARATE_PARTITION_ENABLE if was not already set (set earlier via build.sh).
+SYSTEMEXT_SEPARATE_PARTITION_ENABLE ?= false
+
 ###### Dynamic Partition Handling ####
 ifneq ($(strip $(BOARD_DYNAMIC_PARTITION_ENABLE)),true)
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
@@ -186,20 +151,30 @@ AB_OTA_PARTITIONS ?= system
 endif
 else
 TARGET_COPY_OUT_PRODUCT := product
+ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
+endif
 BOARD_USES_PRODUCTIMAGE := true
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
-ifeq ($(ENABLE_AB), true)
-    BOARD_SUPER_PARTITION_SIZE := 12884901888
-else
-    BOARD_SUPER_PARTITION_SIZE := 6442450944
+ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 endif
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
+BOARD_SUPER_PARTITION_SIZE := 12884901888
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
+ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext product
+else
 BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system product
+endif
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 6438256640
 BOARD_EXT4_SHARE_DUP_BLOCKS := true
 ifeq ($(ENABLE_AB), true)
+ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
+AB_OTA_PARTITIONS ?= system system_ext product vbmeta_system
+else
 AB_OTA_PARTITIONS ?= system product vbmeta_system
+endif
 endif
 endif
 ###### Dynamic Partition Handling ####
@@ -210,3 +185,4 @@ endif
 #################################################################################
 -include vendor/qcom/defs/board-defs/system/*.mk
 #################################################################################
+include device/qcom/sepolicy/SEPolicy.mk
