@@ -46,9 +46,6 @@ mm.enable.smoothstreaming=true
 vendor.mm.enable.qcom_parser=131071999
 persist.mm.enable.prefetch=true
 
-#Netflix custom property
-ro.netflix.bsp_rev=Q845-05000-1
-
 #
 # system props for the data modules
 #
