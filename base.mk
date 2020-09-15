@@ -794,7 +794,7 @@ PRODUCT_PACKAGES := \
     SnapdragonLauncher
 
 ifeq ($(TARGET_HAS_LOW_RAM),true)
-    DELAUN := Launcher3GoIconRecents
+    DELAUN := Launcher3QuickStepGo
 else
     # Live Wallpapers
     PRODUCT_PACKAGES += \
