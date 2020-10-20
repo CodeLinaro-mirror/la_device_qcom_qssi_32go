@@ -133,9 +133,6 @@ TARGET_USES_AOSP := false
 TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
 
-# RRO configuration
-TARGET_USES_RRO := true
-
 TARGET_USES_NQ_NFC := true
 
 
@@ -246,11 +243,6 @@ KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTAL
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
-
-ifneq ($(strip $(TARGET_USES_RRO)),true)
-DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay
-endif
-
 
 #Enable vndk-sp Libraries
 PRODUCT_PACKAGES += vndk_package
