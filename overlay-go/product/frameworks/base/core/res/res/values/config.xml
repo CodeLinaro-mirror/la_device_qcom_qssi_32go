@@ -67,4 +67,14 @@
         <item>"usb\\d"</item>
         <item>"rndis\\d"</item>
     </string-array>
+
+    <!-- Whether or not swipe up gesture's opt-in setting is available on this device -->
+    <bool name="config_swipe_up_gesture_setting_available">true</bool>
+
+    <!--- Launcher - configure high/low-res scales for task snapshots -->
+    <item name="config_highResTaskSnapshotScale" format="float" type="dimen">0.8</item>
+    <item name="config_lowResTaskSnapshotScale" format="float" type="dimen">0.3</item>
+
+    <!-- Configure 16-bit task snapshots -->
+    <bool name="config_use16BitTaskSnapshotPixelFormat">true</bool>
 </resources>
