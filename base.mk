@@ -983,3 +983,12 @@ PRODUCT_PACKAGES += libvndfwk_detect_jni.qti
 PRODUCT_PACKAGES += libqti_vndfwk_detect
 PRODUCT_PACKAGES += libvndfwk_detect_jni.qti.vendor
 PRODUCT_PACKAGES += libqti_vndfwk_detect.vendor
+
+# Soong namespace for aosp vs qva differentiation
+SOONG_CONFIG_NAMESPACES += aosp_vs_qva
+SOONG_CONFIG_aosp_vs_qva += aosp_or_qva
+ifeq ($(TARGET_FWK_SUPPORTS_FULL_VALUEADDS),true)
+SOONG_CONFIG_aosp_vs_qva_aosp_or_qva := qva
+else
+SOONG_CONFIG_aosp_vs_qva_aosp_or_qva := aosp
+endif
