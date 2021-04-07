@@ -8,6 +8,10 @@ PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 # the shipping API level for the target is greater than 29.
 PRODUCT_PRODUCT_VNDK_VERSION := current
 
+# Mismatch in the uses-library tags between build system and the manifest leads
+# to soong APK manifest_check tool errors. Enable the flag to fix this.
+RELAX_USES_LIBRARY_CHECK := true
+
 # Enable product partition Java I/F. It is automatically set to true if
 # the shipping API level for the target is greater than 29.
 PRODUCT_ENFORCE_PRODUCT_PARTITION_INTERFACE := true
