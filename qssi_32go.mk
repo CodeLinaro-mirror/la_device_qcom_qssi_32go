@@ -65,7 +65,7 @@ PRODUCT_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go/product
 
 # Retain the earlier default behavior i.e. ota config (dynamic partition was disabled if not set explicitly), so set
 # SHIPPING_API_LEVEL to 28 if it was not set earlier (this is generally set earlier via build.sh per-target)
-SHIPPING_API_LEVEL := 30
+SHIPPING_API_LEVEL := 31
 
 #### Turning BOARD_DYNAMIC_PARTITION_ENABLE flag to TRUE will enable dynamic partition/super image creation.
 # Enable Dynamic partitions only for Q new launch devices and beyond
