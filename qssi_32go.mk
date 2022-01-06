@@ -56,6 +56,9 @@ $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackageGo.mk)
 DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go/device
 PRODUCT_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go/product
 
+# Disable surfaceflinger prime_shader cache to improve post boot memory.
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += service.sf.prime_shader_cache=0
+
 #########################End of Go configs########################################
 
 
