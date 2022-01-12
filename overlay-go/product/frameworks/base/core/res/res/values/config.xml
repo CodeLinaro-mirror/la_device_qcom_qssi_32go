@@ -77,4 +77,7 @@
 
     <!-- Configure 16-bit task snapshots -->
     <bool name="config_use16BitTaskSnapshotPixelFormat">true</bool>
+
+    <!-- Whether to select voice/data/sms preference without user confirmation -->
+    <bool name="config_voice_data_sms_auto_fallback">true</bool>
 </resources>
