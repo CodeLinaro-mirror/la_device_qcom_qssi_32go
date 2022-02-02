@@ -5,6 +5,7 @@ $(call inherit-product, device/qcom/qssi_32go/base.mk)
 # device-vendor.mk first to make sure QC specific files gets installed.
 $(call inherit-product-if-exists, $(QCPATH)/common/config/device-vendor-qssi.mk)
 
+ifeq ($(TARGET_SUPPORTS_WEAR_ANDROID),true)
 ifeq ($(TARGET_HAS_LOW_RAM),true)
     PRODUCT_PROPERTY_OVERRIDES += \
         keyguard.no_require_sim=true \
@@ -16,6 +17,11 @@ ifeq ($(TARGET_HAS_LOW_RAM),true)
     $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 else
     $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+endif
+endif
+
+ifeq ($(TARGET_SUPPORTS_WEAR_OS),true)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system.mk)
 endif
 
 PRODUCT_BRAND := qcom
@@ -47,6 +53,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/qcom/qssi/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
     device/qcom/qssi/privapp-permissions-qti-system-ext.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-qti-system-ext.xml
+
+ifeq ($(TARGET_SUPPORTS_WEAR_ANDROID),true)
+PRODUCT_COPY_FILES += \
+    device/qcom/qssi_32go/privapp-permissions-qti-wearable.xml:system/etc/permissions/privapp-permissions-qti-wearable.xml
+endif
 
 
 # Ipsec_tunnels feature
