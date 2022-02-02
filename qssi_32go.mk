@@ -30,6 +30,9 @@ SYSTEMEXT_SEPARATE_PARTITION_ENABLE ?= false
 ##############################Go configs###########################################
 #Go variant flag
 TARGET_HAS_LOW_RAM := true
+TARGET_SUPPORTS_WEAR_ANDROID := true
+TARGET_SUPPORTS_WEAR_OS := false
+
 
 TARGET_SYSTEM_PROP := device/qcom/qssi_32go/system.prop
 
