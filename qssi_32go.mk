@@ -215,7 +215,9 @@ PRODUCT_PACKAGES += \
     libhealthd.msm
 
 DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/qssi_32go/framework_manifest.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+    vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml \
+    device/qcom/qssi_32go/vendor_framework_compatibility_matrix.xml
 
 #audio related module
 PRODUCT_PACKAGES += libvolumelistener
