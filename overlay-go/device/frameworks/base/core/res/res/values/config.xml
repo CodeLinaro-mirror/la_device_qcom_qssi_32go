@@ -36,4 +36,15 @@
     <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
     on the headphone/microphone jack. When false use the older uevent framework -->
     <bool name="config_useDevInputEventForAudioJack">true</bool>
+    <!-- Enable doze mode -->
+    <string name="config_dozeComponent">com.qualcomm.qti.contextualmode/com.qualcomm.qti.contextualmode.ContextualModeDozeService</string>
+    <bool name="config_dozeAfterScreenOff">false</bool>
+    <!-- Screen brightness when dozing. -->
+    <integer name="config_screenBrightnessDoze">17</integer>
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
+
+    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
+
+    <integer name="config_shortPressOnPowerBehavior">6</integer>
+
 </resources>
