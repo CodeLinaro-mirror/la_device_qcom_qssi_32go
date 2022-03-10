@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+Changes from Qualcomm Innovation Center are provided under the following license:
+
+Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted (subject to the limitations in the
+disclaimer below) provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+
+    * Neither the name of Qualcomm Innovation Center, Inc. nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE
+GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT
+HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
+-->
+
+<!--
+===============================================================
+                        PLEASE READ
+===============================================================
+This file contains the themes that are the Device Defaults.
+If you want to edit themes to skin your device, do it here.
+We recommend that you do not edit themes.xml and instead edit
+this file.
+
+Editing this file instead of themes.xml will greatly simplify
+merges for future platform versions and CTS compliance will be
+easier.
+===============================================================
+                        PLEASE READ
+===============================================================
+ -->
+<resources>
+
+    <!-- The default theme for apps that target API level XX and higher.
+         <p>The DeviceDefault themes are aliases for a specific device’s native look and feel. The
+         DeviceDefault theme family and widget style family offer ways for you to target your app
+         to a device’s native theme with all device customizations intact.</p>
+         <p>For example, when you set your app's {@code targetSdkVersion} to XX or higher, this
+         theme is applied to your application by default. As such, your app might appear with the
+         {@link #Theme_Material Material} styles on one device, but with a different set of styles on
+         another device. This is great if you want your app to fit with the device's native look and
+         feel. If, however, you prefer to keep your UI style the same across all devices, you should
+         apply a specific theme such as {@link #Theme_Material Material} or one of your own design.
+         For more information, read <a
+         href="http://android-developers.blogspot.com/20XX/XX/material-everywhere.html">Material
+         Everywhere</a>.</p>
+         <p>Styles used by the DeviceDefault theme are named using the convention
+         Type.DeviceDefault.Etc (for example, {@code Widget.DeviceDefault.Button} and
+         {@code TextAppearance.DeviceDefault.Widget.PopupMenu.Large}).</p>
+          -->
+    <style name="Theme.DeviceDefault.Light.DarkActionBar" parent="Theme.Material.Light.DarkActionBar">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+        <item name="colorError">@color/error_color_device_default_light</item>
+
+        <!-- Dialog attributes -->
+        <item name="dialogCornerRadius">@dimen/config_dialogCornerRadius</item>
+        <item name="alertDialogTheme">@style/Theme.DeviceDefault.Light.Dialog.Alert</item>
+
+        <!-- Text styles -->
+        <item name="textAppearanceButton">@style/TextAppearance.DeviceDefault.Widget.Button</item>
+
+        <!-- Button styles -->
+        <item name="buttonCornerRadius">@dimen/config_buttonCornerRadius</item>
+        <item name="buttonBarButtonStyle">@style/Widget.DeviceDefault.Button.ButtonBar.AlertDialog</item>
+
+        <!-- Progress bar attributes -->
+        <item name="colorProgressBackgroundNormal">@color/config_progress_background_tint</item>
+        <item name="progressBarCornerRadius">@dimen/config_progressBarCornerRadius</item>
+
+        <!-- Toolbar attributes -->
+        <item name="toolbarStyle">@style/Widget.DeviceDefault.Toolbar</item>
+
+        <!-- Window Transluent attributes -->
+        <item name="windowIsTranslucent">false</item>
+    </style>
+</resources>

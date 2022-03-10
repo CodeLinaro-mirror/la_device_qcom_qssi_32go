@@ -45,6 +45,9 @@ TARGET_SUPPORTS_WEAR_ANDROID := true
 TARGET_SUPPORTS_WEAR_OS := false
 TARGET_SUPPORTS_WEARABLES := true
 
+# Flag to enable DeepSleep
+TARGET_SUPPORTS_DS := true
+
 TARGET_SYSTEM_PROP := device/qcom/qssi_32go/system.prop
 
 # Enable DM file preopting to reduce first boot time
@@ -234,7 +237,12 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-impl
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-service_64
 
 PRODUCT_COPY_FILES += \
-    frameworks/base/data/sounds/effects/camera_click.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/camera_click.ogg
+    frameworks/base/data/sounds/effects/camera_click.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/camera_click.ogg \
+    frameworks/base/data/sounds/effects/VideoRecord.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/VideoRecord.ogg \
+    frameworks/base/data/sounds/effects/VideoStop.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/VideoStop.ogg \
+
+PRODUCT_PACKAGES += \
+    SnapdragonMusic
 
 # Enable telephpony ims feature
 PRODUCT_COPY_FILES += \
