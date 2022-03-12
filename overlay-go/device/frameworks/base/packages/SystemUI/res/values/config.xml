@@ -47,5 +47,11 @@
        increase the rate of unintentional unlocks. -->
   <bool name="config_lockscreenAntiFalsingClassifierEnabled">false</bool>
 
+  <!-- Disable KeyguardService -->
+      <bool name="config_enableKeyguardService">true</bool>
+
+  <!-- When true, show charging animation -->
+  <bool name="config_show_battery_charging_anim">false</bool>
+
 </resources>
 
