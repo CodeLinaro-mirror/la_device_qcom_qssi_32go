@@ -36,4 +36,77 @@
     <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
     on the headphone/microphone jack. When false use the older uevent framework -->
     <bool name="config_useDevInputEventForAudioJack">true</bool>
+    <!-- Enable doze mode -->
+    <string name="config_dozeComponent">com.qualcomm.qti.contextualmode/com.qualcomm.qti.contextualmode.ContextualModeDozeService</string>
+    <bool name="config_dozeAfterScreenOff">false</bool>
+    <!-- Screen brightness when dozing. -->
+    <integer name="config_screenBrightnessDoze">17</integer>
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
+
+    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
+
+    <integer name="config_shortPressOnPowerBehavior">6</integer>
+
+    <!-- default enable dark theme -->
+    <integer name="config_defaultNightMode">2</integer>
+
+    <integer name="config_minimumScreenOffTimeout">5000</integer>
+
+    <!-- <bool name="config_show_ampm_in_unlock_screen">true</bool> -->
+    <!-- Control the default UI mode type to use when there is no other type override
+         happening.  One of the following values (See Configuration.java)
+         1  UI_MODE_TYPE_NORMAL
+         4  UI_MODE_TYPE_TELEVISION
+         5  UI_MODE_TYPE_APPLIANCE
+         6  UI_MODE_TYPE_WATCH
+         Any other values will have surprising consequences. -->
+    <integer name="config_defaultUiModeType">6</integer>
+
+    <bool name="config_disableLockscreenByDefault">true</bool>
+
+    <bool name="config_showNavigationBar">false</bool>
+
+    <bool name="config_supportsMultiDisplay">false</bool>
+    <bool name="config_supportsSplitScreenMultiWindow">false</bool>
+    <bool name="config_enableUpdateableTimeZoneRules">false</bool>
+
+    <bool name="config_swipe_up_gesture_setting_available">true</bool>
+
+    <bool name="config_enableAppWidgetService">true</bool>
+    <!-- Indicate whether to allow the device to suspend when the screen is off
+     due to the proximity sensor.  This resource should only be set to true
+     if the sensor HAL correctly handles the proximity sensor as a wake-up source.
+     Otherwise, the device may fail to wake out of suspend reliably.
+     The default is false. -->
+    <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
+
+    <!-- If true, enables auto-rotation features using the accelerometer.
+      Otherwise, auto-rotation is disabled.  Applications may still request
+      to use specific orientations but the sensor is ignored and sensor-based
+      orientations are not available.  Furthermore, all auto-rotation related
+      settings are omitted from the system UI.  In certain situations we may
+      still use the accelerometer to determine the orientation, such as when
+      docked if the dock is configured to enable the accelerometer. -->
+    <bool name="config_supportAutoRotation">false</bool>
+
+    <!-- List of regexpressions describing the interface (if any) that represent tetherable
+           Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
+           should be empty.  An example would be "softap.*" -->
+    <string-array translatable="false" name="config_tether_wifi_regexs">
+        <item>"wigig0"</item>
+        <item>"wlan0"</item>
+    </string-array>
+
+    <bool translatable="false" name="config_wifi_enable_wifi_firmware_debugging">false</bool>
+    <integer translatable="false" name="config_wifi_logger_ring_buffer_verbose_size_limit_kb">64</integer>
+
+    <!-- Enable ACS (auto channel selection) for Wifi hotspot (SAP) -->
+    <bool translatable="false" name="config_wifi_softap_acs_supported">false</bool>
+
+    <!-- The small screens of watch devices makes multi-window support undesireable. -->
+    <bool name="config_supportsMultiWindow">false</bool>
+
+    <!-- Enable 802.11ac for Wifi hotspot (SAP) -->
+    <bool translatable="false" name="config_wifi_softap_ieee80211ac_supported">false</bool>
+
 </resources>

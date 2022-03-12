@@ -35,4 +35,7 @@
      <!-- Do not enable auto rotation switching. -->
      <bool name="def_accelerometer_rotation">false</bool>
 
+    <bool name="def_restrict_background_data">false</bool>
+    <bool name="def_lockscreen_disabled">true</bool>
+
 </resources>

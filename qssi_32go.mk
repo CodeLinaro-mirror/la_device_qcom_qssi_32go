@@ -32,7 +32,10 @@ SYSTEMEXT_SEPARATE_PARTITION_ENABLE ?= false
 TARGET_HAS_LOW_RAM := true
 TARGET_SUPPORTS_WEAR_ANDROID := true
 TARGET_SUPPORTS_WEAR_OS := false
+TARGET_SUPPORTS_WEARABLES := true
 
+# Flag to enable DeepSleep
+TARGET_SUPPORTS_DS := true
 
 TARGET_SYSTEM_PROP := device/qcom/qssi_32go/system.prop
 
@@ -200,7 +203,9 @@ PRODUCT_PACKAGES += \
     libhealthd.msm
 
 DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/qssi_32go/framework_manifest.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+    vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml \
+    device/qcom/qssi_32go/vendor_framework_compatibility_matrix.xml
 
 #audio related module
 PRODUCT_PACKAGES += libvolumelistener
@@ -216,6 +221,17 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-impl
 # Enable binderized camera HAL
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-service_64
 
+PRODUCT_COPY_FILES += \
+    frameworks/base/data/sounds/effects/camera_click.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/camera_click.ogg \
+    frameworks/base/data/sounds/effects/VideoRecord.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/VideoRecord.ogg \
+    frameworks/base/data/sounds/effects/VideoStop.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/VideoStop.ogg \
+
+PRODUCT_PACKAGES += \
+    SnapdragonMusic
+
+# Enable telephpony ims feature
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml
 
 # Context hub HAL
 PRODUCT_PACKAGES += \
