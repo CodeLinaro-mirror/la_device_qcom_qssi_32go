@@ -39,6 +39,8 @@ TARGET_SUPPORTS_DS := true
 
 TARGET_SYSTEM_PROP := device/qcom/qssi_32go/system.prop
 
+PRODUCT_PACKAGES += qpnp_pon.kl
+
 # Enable DM file preopting to reduce first boot time
 PRODUCT_DEX_PREOPT_GENERATE_DM_FILES := true
 PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
