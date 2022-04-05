@@ -124,7 +124,7 @@ config.disable_rtt=true
 persist.sys.force_sw_gles=1
 persist.vendor.radio.atfwd.start=true
 ro.kernel.qemu.gles=0
-qemu.hw.mainkeys=0
+qemu.hw.mainkeys=1
 
 #Expose aux camera for below packages
 vendor.camera.aux.packagelist=org.codeaurora.snapcam
@@ -146,3 +146,6 @@ debug.stagefright.ccodec=1
 
 #Proprty to set native recorder's maximum base layer fps
 ro.media.recorder-max-base-layer-fps = 60
+
+# Property to control wearable modification
+ro.product.qti.qcom_watch=true
