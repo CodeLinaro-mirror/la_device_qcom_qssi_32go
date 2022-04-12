@@ -42,6 +42,9 @@ SYSTEMEXT_SEPARATE_PARTITION_ENABLE ?= false
 #Go variant flag
 TARGET_HAS_LOW_RAM := true
 
+#1G ddr iot project variant flag
+TARGET_1G_DDR_RAM := true
+
 TARGET_SYSTEM_PROP := device/qcom/qssi_32go/system.prop
 
 # Enable DM file preopting to reduce first boot time
@@ -245,10 +248,12 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
 #PASR HAL and APP
+ifneq ($(TARGET_1G_DDR_RAM),true)
 PRODUCT_PACKAGES += \
     vendor.qti.power.pasrmanager@1.0-service \
     vendor.qti.power.pasrmanager@1.0-impl \
     pasrservice
+endif
 
 # Kernel modules install path
 KERNEL_MODULES_INSTALL := dlkm
