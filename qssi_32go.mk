@@ -235,6 +235,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml
 
+# Set hardware type to watch
+PRODUCT_COPY_FILES += \
+    device/qcom/qssi_32go/wearable_core_hardware.xml:system/etc/permissions/wearable_core_hardware.xml
+PRODUCT_CHARACTERISTICS := nosdcard,watch
+
 # Context hub HAL
 PRODUCT_PACKAGES += \
     android.hardware.contexthub@1.0-impl.generic \
