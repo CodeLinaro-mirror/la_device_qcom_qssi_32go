@@ -38,7 +38,11 @@ QSD8K_BOARD_PLATFORMS := qsd8k
 
 TARGET_USE_VENDOR_CAMERA_EXT := true
 
+ifeq ($(TARGET_1G_DDR_RAM), true)
+BOARD_HAVE_QCOM_FM ?= false
+else
 BOARD_HAVE_QCOM_FM ?= true
+endif
 
 #Camera QC extends API
 #ifeq ($(strip $(TARGET_USES_QTIC_EXTENSION)),true)
@@ -767,32 +771,36 @@ FD_LEAK := libc_leak_detector
 
 PRODUCT_PACKAGES := \
     AccountAndSyncSettings \
-    DeskClock \
     AlarmProvider \
-    Calculator \
-    Calendar \
-    Camera \
     CertInstaller \
     DrmProvider \
-    Email \
-    Gallery2 \
-    LatinIME \
-    Music \
     netutils-wrapper-1.0 \
     Provision \
     Protips \
-    QuickSearchBox \
     Settings \
     Sync \
     SystemUI \
     Updater \
-    CalendarProvider \
     SyncProvider \
-    SoundRecorder \
     IM \
-    SnapdragonGallery \
-    VideoEditor \
     SnapdragonLauncher
+
+ifneq ($(TARGET_1G_DDR_RAM), true)
+PRODUCT_PACKAGES += \
+    DeskClock \
+    Calculator \
+    Calendar \
+    Camera \
+    Email \
+    Gallery2 \
+    LatinIME \
+    Music \
+    QuickSearchBox \
+    CalendarProvider \
+    SoundRecorder \
+    SnapdragonGallery \
+    VideoEditor
+endif
 
 ifeq ($(TARGET_HAS_LOW_RAM),true)
     DELAUN := Launcher3QuickStepGo
@@ -881,7 +889,9 @@ PRODUCT_PACKAGES += $(SENSORS_HARDWARE)
 PRODUCT_PACKAGES += $(STMLOG)
 PRODUCT_PACKAGES += $(THERMAL_HAL)
 PRODUCT_PACKAGES += $(TSLIB_EXTERNAL)
+ifneq ($(TARGET_1G_DDR_RAM),true)
 PRODUCT_PACKAGES += $(VR_HAL)
+endif
 PRODUCT_PACKAGES += $(QRGND)
 PRODUCT_PACKAGES += $(UPDATER)
 PRODUCT_PACKAGES += $(WPA)
