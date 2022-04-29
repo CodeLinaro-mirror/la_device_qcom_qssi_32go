@@ -171,3 +171,6 @@ ro.product.qti.qcom_watch=true
 
 #DPI change for Atherton wearables
 ro.sf.lcd_density=160
+
+#Add drm property and set it to false for wear
+drm.service.enabled=false
