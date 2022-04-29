@@ -255,6 +255,10 @@ PRODUCT_COPY_FILES += \
     device/qcom/qssi_32go/wearable_core_hardware.xml:system/etc/permissions/wearable_core_hardware.xml
 PRODUCT_CHARACTERISTICS := nosdcard,watch
 
+
+PRODUCT_COPY_FILES += \
+    device/qcom/qssi_32go/wearable_excluded_core_hardware.xml:system/etc/permissions/wearable_excluded_core_hardware.xml
+
 # Context hub HAL
 PRODUCT_PACKAGES += \
     android.hardware.contexthub@1.0-impl.generic \
