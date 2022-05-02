@@ -39,6 +39,8 @@ TARGET_SUPPORTS_DS := true
 
 TARGET_SYSTEM_PROP := device/qcom/qssi_32go/system.prop
 
+PRODUCT_PACKAGES += qpnp_pon.kl
+
 # Enable DM file preopting to reduce first boot time
 PRODUCT_DEX_PREOPT_GENERATE_DM_FILES := true
 PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
@@ -232,6 +234,11 @@ PRODUCT_PACKAGES += \
 # Enable telephpony ims feature
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml
+
+# Set hardware type to watch
+PRODUCT_COPY_FILES += \
+    device/qcom/qssi_32go/wearable_core_hardware.xml:system/etc/permissions/wearable_core_hardware.xml
+PRODUCT_CHARACTERISTICS := nosdcard,watch
 
 # Context hub HAL
 PRODUCT_PACKAGES += \
