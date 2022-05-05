@@ -121,6 +121,5 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
     <string name="config_networkLocationProviderPackageName" translatable="false">com.qualcomm.location</string>
     <string name="config_fusedLocationProviderPackageName" translatable="false">com.qualcomm.location</string>
     <bool name="config_allowAllRotations">true</bool>
-    <integer name="config_screenBrightnessDoze">60</integer>
     <integer name="config_screenBrightnessDim">60</integer>
 </resources>
