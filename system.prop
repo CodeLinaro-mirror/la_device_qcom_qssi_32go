@@ -78,6 +78,10 @@ persist.fuse_sdcard=true
 #System props for BT
 ro.bluetooth.library_name=libbluetooth_qti.so
 persist.vendor.btstack.aac_frm_ctl.enabled=true
+bt.max.hfpclient.connections=1
+
+#enable lazy hal for BT
+ro.vendor.bt.enablelazyhal=true
 
 #system prop for RmNet Data
 persist.rmnet.data.enable=true
@@ -164,3 +168,9 @@ ro.media.recorder-max-base-layer-fps = 60
 
 # Property to control wearable modification
 ro.product.qti.qcom_watch=true
+
+#DPI change for Atherton wearables
+ro.sf.lcd_density=160
+
+#Add drm property and set it to false for wear
+drm.service.enabled=false
