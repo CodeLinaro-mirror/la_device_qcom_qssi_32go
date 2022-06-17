@@ -989,6 +989,12 @@ PRODUCT_PACKAGES += libqti_vndfwk_detect_vendor
 PRODUCT_PACKAGES += libvndfwk_detect_jni.qti_system
 PRODUCT_PACKAGES += libvndfwk_detect_jni.qti_vendor
 
+PRODUCT_COPY_FILES += \
+    packages/apps/CellBroadcastReceiver/apex/permissions/com.android.cellbroadcastreceiver.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/com.android.cellbroadcastreceiver.xml
+
+PRODUCT_COPY_FILES += \
+    packages/apps/CellBroadcastReceiver/apex/permissions/com.android.cellbroadcastservice.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.android.cellbroadcastservice.xml
+
 #soong namespace for qssi vs vendor differentiation
 SOONG_CONFIG_NAMESPACES += qssi_vs_vendor
 SOONG_CONFIG_qssi_vs_vendor += qssi_or_vendor
