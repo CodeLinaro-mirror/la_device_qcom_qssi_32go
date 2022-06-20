@@ -242,6 +242,7 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/sounds/effects/camera_click.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/camera_click.ogg \
     frameworks/base/data/sounds/effects/VideoRecord.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/VideoRecord.ogg \
     frameworks/base/data/sounds/effects/VideoStop.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/VideoStop.ogg \
+    frameworks/base/data/sounds/effects/ogg/ChargingStarted.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/ChargingStarted.ogg \
 
 PRODUCT_PACKAGES += \
     SnapdragonMusic
