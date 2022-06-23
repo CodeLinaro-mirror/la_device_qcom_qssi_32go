@@ -372,4 +372,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
     <!-- Flag specifying whether or not IMS will use the dynamic ImsResolver -->
     <bool name="config_dynamic_bind_ims">true</bool>
 
+    <!-- Control the behavior when the user long presses the power button. -->
+    <integer name="config_longPressOnPowerBehavior">1</integer>
+
 </resources>
