@@ -68,7 +68,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += service.sf.prime_shader_cache=0
 
 # Retain the earlier default behavior i.e. ota config (dynamic partition was disabled if not set explicitly), so set
 # SHIPPING_API_LEVEL to 28 if it was not set earlier (this is generally set earlier via build.sh per-target)
-SHIPPING_API_LEVEL := 31
+SHIPPING_API_LEVEL := 33
 
 #### Turning BOARD_DYNAMIC_PARTITION_ENABLE flag to TRUE will enable dynamic partition/super image creation.
 # Enable Dynamic partitions only for Q new launch devices and beyond
@@ -282,9 +282,9 @@ else
 AUDIO_FEATURE_ENABLED_DLKM := false
 endif
 
-ifeq ($(ENABLE_VIRTUAL_AB), true)
-    $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-endif
+# Enable virtual A/B compression
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/android_t_baseline.mk)
+PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := gz
 
 ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), false)
 PRODUCT_PACKAGES += \
