@@ -26,8 +26,27 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+# Changes from Qualcomm Innovation Center are provided under the following license:
+
+# Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
 # This is the file for test teams to trigger their test setup.
 #
 # Sample command: /system/bin/sh /sdcard/command.sh
 # All the output files will be created under root privilege. Please use
 # "adb root" before pulling the generated files.
+
+target=`getprop ro.board.platform`
+
+case "$target" in
+    "msm8996")
+        echo 1 > /sys/kernel/debug/scm_errata/kryo_e76
+        ;;
+esac
+
+func_enable=`getprop persist.vendor.sys.rawdump_copy`
+case "$func_enable" in
+    1) runcon u:r:su:s0 /system/bin/sh /system/bin/ramdump_wrapper.sh &
+        ;;
+esac
