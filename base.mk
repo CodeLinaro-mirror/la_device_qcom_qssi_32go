@@ -988,3 +988,14 @@ PRODUCT_PACKAGES += libqti_vndfwk_detect_system
 PRODUCT_PACKAGES += libqti_vndfwk_detect_vendor
 PRODUCT_PACKAGES += libvndfwk_detect_jni.qti_system
 PRODUCT_PACKAGES += libvndfwk_detect_jni.qti_vendor
+
+SOONG_CONFIG_NAMESPACES += bredr_vs_btadva
+SOONG_CONFIG_bredr_vs_btadva += bredr_or_btadva
+
+ifneq "$(wildcard vendor/qcom/proprietary/commonsys/bt/bt_adv_audio)" ""
+    $(warning bt_adv_audio dir is present)
+    SOONG_CONFIG_bredr_vs_btadva_bredr_or_btadva := btadva
+else
+    $(warning bt_adv_audio dir is not present)
+    SOONG_CONFIG_bredr_vs_btadva_bredr_or_btadva := bredr
+endif #ifneq "$(wildcard vendor/qcom/proprietary/commonsys/bt/bt_adv_audio)" ""
