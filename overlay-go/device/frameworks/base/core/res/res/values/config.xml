@@ -30,12 +30,16 @@
 
 <resources>
     <!-- Flag specifying whether VoLTE, VT and WFC is available on device -->
-    <bool name="config_device_volte_available">true</bool>
+    <bool name="config_device_volte_available">false</bool>
     <bool name="config_device_vt_available">true</bool>
     <bool name="config_device_wfc_ims_available">true</bool>
     <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
     on the headphone/microphone jack. When false use the older uevent framework -->
     <bool name="config_useDevInputEventForAudioJack">true</bool>
+    <bool name="config_supportsMultiDisplay">false</bool>
+    <bool name="config_supportsSplitScreenMultiWindow">false</bool>
+    <bool name="config_enableUpdateableTimeZoneRules">false</bool>
+    <bool name="config_supportsMultiWindow">false</bool>
     <!-- Enable doze mode -->
     <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
 </resources>
