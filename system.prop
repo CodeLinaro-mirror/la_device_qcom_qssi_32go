@@ -168,3 +168,6 @@ vendor.iop.enable_uxe=0
 vendor.perf.iop_v3.enable=false
 persist.rcs.supported=0
 vendor.perf.workloadclassifier.enable=false
+
+debug.disable_screen_decorations=1
+vendor.display.disable_rounded_corner=1
