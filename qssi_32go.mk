@@ -303,6 +303,9 @@ endif
 # remove GMS packages
 TARGET_NO_GMS_PACKAGES := true
 
+# enable AOSP Dialer
+PRODUCT_PACKAGES += Dialer
+
 ###################################################################################
 # This is the End of target.mk file.
 # Now, Pickup other split product.mk files:
