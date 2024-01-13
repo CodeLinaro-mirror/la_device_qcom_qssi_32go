@@ -106,4 +106,7 @@
     <!-- MMS user agent prolfile url -->
     <string name="config_mms_user_agent_profile_url" translatable="false">
         http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
+
+    <!-- Component name of the default wallpaper. This will be ImageWallpaper if not specified -->
+    <string name="default_wallpaper_component" translatable="false">com.qualcomm.qti.weartech.watchface/com.qualcomm.qti.weartech.watchface.WatchFaceService</string>
 </resources>
