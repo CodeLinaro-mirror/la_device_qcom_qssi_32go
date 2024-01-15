@@ -109,4 +109,68 @@
 
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not specified -->
     <string name="default_wallpaper_component" translatable="false">com.qualcomm.qti.weartech.watchface/com.qualcomm.qti.weartech.watchface.WatchFaceService</string>
+
+    <!-- enable Offload -->
+    <bool name="config_offloadEnabled">true</bool>
+    <integer name="config_offloadBrightenAlpha">80</integer>
+    <integer name="config_offloadDimmingAlpha">80</integer>
+
+    <!-- default dream service -->
+    <string name="config_dozeComponent">com.qualcomm.qti.standby/com.qualcomm.qti.standby.state.AlwaysOnService</string>
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+
+    <!-- enable TWM Power Off -->
+    <integer name="config_twm">1</integer>
+
+    <!-- Trigger TWM if battery level drops below this value -->
+    <integer name="config_autoTriggerTWMThreshold">5</integer>
+
+    <!-- The file path of default alarm ringtone for offloading. -->
+    <string translatable="false" name="config_defaultOffloadAlarmRingtoneFilePath">/system/product/media/audio/offload/default_alarm_ringtone.wav</string>
+
+    <!-- default snooze button id for AON Alarm.
+         0 means the power key id
+         1 means the volume down button id.
+         2 means the volume up button id. -->
+    <integer name="config_defaultOffloadAlarmSnoozeButtoneId">1</integer>
+
+    <!-- default dismiss button id for AON Alarm.
+         0 means the power key id
+         1 means the volume down button id.
+         2 means the volume up button id. -->
+    <integer name="config_defaultOffloadAlarmDismissButtoneId">0</integer>
+
+    <!-- default vibration id for AON Alarm.
+         -1 means invalid. -->
+    <integer name="config_defaultOffloadAlarmVibrationId">17</integer>
+
+    <!-- Go to home -->
+    <integer name="config_shortPressOnPowerBehavior">4</integer>
+
+    <!-- Enable doze mode -->
+    <bool name="config_dozeAfterScreenOff">false</bool>
+    <!-- Screen brightness when dozing. -->
+    <integer name="config_screenBrightnessDoze">40</integer>
+    <!-- -2 is a standard invalid doze float value, and in this situation,
+         config_screenBrightnessDozeFloat will be calculated according to config_screenBrightnessDoze-->
+    <item name="config_screenBrightnessDozeFloat" format="float" type="dimen">-2</item>
+    <integer name="config_screenBrightnessDim">40</integer>
+    <!-- -2 is a standard invalid doze float value, and in this situation,
+         config_screenBrightnessDimFloat will be calculated according to config_screenBrightnessDim-->
+    <item name="config_screenBrightnessDimFloat" format="float" type="dimen">-2</item>
+
+    <!-- Whether Wrist Rotation is supported, used for DisplayRotation rotate per
+         mUserRotation. -->
+    <bool name="config_supportWristRotation">true</bool>
+
+    <!-- long press power to show global action dialog -->
+    <integer name="config_longPressOnPowerBehavior">1</integer>
+
+    <string-array translatable="false" name="config_globalActionsList">
+        <item>power</item>
+        <item>restart</item>
+        <item>twm</item>
+        <item>deepsleep</item>
+        <item>hibernate</item>
+    </string-array>
 </resources>
