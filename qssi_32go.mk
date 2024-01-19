@@ -306,6 +306,9 @@ TARGET_NO_GMS_PACKAGES := true
 # enable AOSP Dialer
 PRODUCT_PACKAGES += Dialer
 
+# enable SnapdragonMusic
+PRODUCT_PACKAGES += SnapdragonMusic
+
 ###################################################################################
 # This is the End of target.mk file.
 # Now, Pickup other split product.mk files:

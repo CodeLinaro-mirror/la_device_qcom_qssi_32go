@@ -100,6 +100,10 @@
     <!-- The restoring is handled by modem if it is true-->
     <bool translatable="false" name="skip_restoring_network_selection">true</bool>
 
+    <!-- True if the device requires AppWidgetService even if it does not have
+     the PackageManager.FEATURE_APP_WIDGETS feature -->
+    <bool name="config_enableAppWidgetService">true</bool>
+
     <!-- MMS user agent string -->
     <string name="config_mms_user_agent" translatable="false">Android-Mms/2.0</string>
 
