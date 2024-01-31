@@ -45,6 +45,14 @@ TARGET_HAS_LOW_RAM := true
 #1G ddr iot project variant flag
 TARGET_1G_DDR_RAM := true
 
+ifeq ($(TARGET_1G_DDR_RAM),true)
+WIDEVINE_ENABLE := false
+ENABLE_WIDEVINE_DRM := false
+TARGET_NOT_SUPPORT_VULKAN :=true
+endif
+
+PRODUCT_LOCALES := en_US
+
 TARGET_SYSTEM_PROP := device/qcom/qssi_32go/system.prop
 
 # Enable DM file preopting to reduce first boot time
@@ -134,10 +142,10 @@ $(call inherit-product, device/qcom/qssi_32go/common.mk)
 #Inherit all except heap growth limit from phone-xhdpi-2048-dalvik-heap.mk
 PRODUCT_PROPERTY_OVERRIDES  += \
 	dalvik.vm.heapstartsize=8m \
-	dalvik.vm.heapsize=512m \
+	dalvik.vm.heapsize=256m \
 	dalvik.vm.heaptargetutilization=0.75 \
 	dalvik.vm.heapminfree=512k \
-	dalvik.vm.heapmaxfree=8m
+	dalvik.vm.heapmaxfree=6m
 
 
 PRODUCT_NAME := $(VENDOR_QTI_DEVICE)
@@ -152,7 +160,7 @@ TARGET_USES_AOSP := false
 TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
 
-TARGET_USES_NQ_NFC := true
+TARGET_USES_NQ_NFC := false
 
 
 # default is nosdcard, S/W button enabled in resource
@@ -240,7 +248,7 @@ PRODUCT_PACKAGES += \
 
 # system prop for enabling QFS (QTI Fingerprint Solution)
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.qfp=true
+    persist.vendor.qfp=false
 
 
 # USB default HAL
