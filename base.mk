@@ -774,6 +774,7 @@ PRODUCT_PACKAGES := \
     AlarmProvider \
     CertInstaller \
     DrmProvider \
+    LatinIME \
     netutils-wrapper-1.0 \
     Provision \
     Protips \
@@ -793,7 +794,6 @@ PRODUCT_PACKAGES += \
     Camera \
     Email \
     Gallery2 \
-    LatinIME \
     Music \
     QuickSearchBox \
     CalendarProvider \
