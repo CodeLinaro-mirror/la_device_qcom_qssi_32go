@@ -161,3 +161,6 @@ debug.stagefright.ccodec=1
 
 #Proprty to set native recorder's maximum base layer fps
 ro.media.recorder-max-base-layer-fps = 60
+
+# Property to control wearable modification
+ro.product.qti.qcom_watch=true
