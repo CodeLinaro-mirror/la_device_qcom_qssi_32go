@@ -123,6 +123,8 @@ TARGET_USES_QSSI := true
 
 TARGET_USES_NEW_ION := true
 
+TARGET_SUPPORTS_AON_UTILITY := true
+
 ENABLE_AB ?= true
 
 TARGET_DEFINES_DALVIK_HEAP := true
@@ -305,6 +307,9 @@ TARGET_NO_GMS_PACKAGES := true
 
 # enable AOSP Dialer
 PRODUCT_PACKAGES += Dialer
+
+# enable SnapdragonMusic
+PRODUCT_PACKAGES += SnapdragonMusic
 
 ###################################################################################
 # This is the End of target.mk file.
