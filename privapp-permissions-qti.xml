@@ -19,6 +19,10 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License
+
+  ~ Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
+  ~ Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+  ~ SPDX-License-Identifier: BSD-3-Clause-Clear
   -->
 
 <!--
@@ -28,6 +32,15 @@ It allows additional grants on top of privapp-permissions-platform.xml
 -->
 
 <permissions>
+    <privapp-permissions package="com.qualcomm.qti.weartech.watchface">
+        <permission name="android.permission.BLUETOOTH" />
+        <permission name="android.permission.READ_FRAME_BUFFER" />
+        <permission name="android.permission.DEVICE_POWER" />
+        <permission name="android.permission.WRITE_SETTINGS" />
+        <permission name="android.permission.WRITE_SECURE_SETTINGS" />
+        <permission name="android.permission.MONITOR_INPUT" />
+        <permission name="android.permission.READ_DEVICE_CONFIG" />
+    </privapp-permissions>
     <privapp-permissions package="com.qualcomm.qti.weartech.settings">
         <permission name="android.permission.WRITE_SECURE_SETTINGS" />
         <permission name="android.permission.MODIFY_AUDIO_ROUTING" />
