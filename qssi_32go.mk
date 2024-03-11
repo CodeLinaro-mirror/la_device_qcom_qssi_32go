@@ -311,6 +311,9 @@ PRODUCT_PACKAGES += Dialer
 # enable SnapdragonMusic
 PRODUCT_PACKAGES += SnapdragonMusic
 
+# enable ui offload
+TARGET_SUPPORTS_UI_OFFLOAD := true
+
 ###################################################################################
 # This is the End of target.mk file.
 # Now, Pickup other split product.mk files:
