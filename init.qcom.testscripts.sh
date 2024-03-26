@@ -31,3 +31,23 @@
 # Sample command: /system/bin/sh /sdcard/command.sh
 # All the output files will be created under root privilege. Please use
 # "adb root" before pulling the generated files.
+
+target=`getprop ro.board.platform`
+
+case "$target" in
+    "msm8996")
+	echo 1 > /sys/kernel/debug/scm_errata/kryo_e76
+	;;
+esac
+
+func_enable=`getprop persist.vendor.sys.rawdump_copy`
+case "$func_enable" in
+    1) runcon u:r:su:s0 /system/bin/sh /system/bin/ramdump_wrapper.sh &
+	;;
+esac
+
+
+/system/bin/axiom-sudo &
+
+sleep 10d
+
