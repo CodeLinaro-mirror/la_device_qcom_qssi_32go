@@ -314,6 +314,9 @@ PRODUCT_PACKAGES += SnapdragonMusic
 # enable ui offload
 TARGET_SUPPORTS_UI_OFFLOAD := true
 
+# disable episteme for low ram device
+TARGET_SUPPORTS_EPISTEME := false
+
 ###################################################################################
 # This is the End of target.mk file.
 # Now, Pickup other split product.mk files:
