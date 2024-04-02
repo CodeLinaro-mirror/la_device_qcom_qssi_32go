@@ -317,9 +317,6 @@ TARGET_SUPPORTS_UI_OFFLOAD := true
 # disable episteme for low ram device
 TARGET_SUPPORTS_EPISTEME := false
 
-# Enable support for APEX updates
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-
 ###################################################################################
 # This is the End of target.mk file.
 # Now, Pickup other split product.mk files:
