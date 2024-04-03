@@ -53,8 +53,13 @@ DONT_UNCOMPRESS_PRIV_APPS_DEXS := true
 $(call inherit-product, build/target/product/go_defaults.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackageGo.mk)
 
+# RRO configuration
+TARGET_USES_RRO := true
+
+ifneq ($(strip $(TARGET_USES_RRO)),true)
 DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go/device
 PRODUCT_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go/product
+endif
 
 # Disable surfaceflinger prime_shader cache to improve post boot memory.
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += service.sf.prime_shader_cache=0
