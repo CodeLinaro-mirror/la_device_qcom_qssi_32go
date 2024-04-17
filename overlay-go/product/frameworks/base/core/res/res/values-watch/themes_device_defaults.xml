@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+     SPDX-License-Identifier: BSD-3-Clause-Clear
+-->
+
+<!--
+===============================================================
+                        PLEASE READ
+===============================================================
+This file contains the themes that are the Device Defaults.
+If you want to edit themes to skin your device, do it here.
+We recommend that you do not edit themes.xml and instead edit
+this file.
+
+Editing this file instead of themes.xml will greatly simplify
+merges for future platform versions and CTS compliance will be
+easier.
+===============================================================
+                        PLEASE READ
+===============================================================
+ -->
+<resources>
+
+    <!-- DeviceDefault theme for day/night activities. -->
+    <style name="Theme.DeviceDefault.DayNight" parent="Theme.DeviceDefault.Light" />
+
+    <!-- Theme used for the intent picker activity. -->
+    <style name="Theme.DeviceDefault.Resolver" parent="Theme.DeviceDefault.ResolverCommon" >
+        <item name="colorControlActivated">?attr/colorControlHighlight</item>
+        <item name="listPreferredItemPaddingStart">?attr/dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingEnd">?attr/dialogPreferredPadding</item>
+    </style>
+
+    <!-- Theme used for the intent picker activity. -->
+    <style name="Theme.DeviceDefault.ResolverCommon" parent="Theme.DeviceDefault.DayNight">
+        <item name="windowAnimationStyle">@style/Animation.DeviceDefault.Activity.Resolver</item>
+        <item name="windowIsTranslucent">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowBackground">@color/transparent</item>
+        <item name="backgroundDimEnabled">true</item>
+        <item name="statusBarColor">@color/transparent</item>
+        <item name="windowContentOverlay">@null</item>
+        <item name="colorControlActivated">?attr/colorControlHighlight</item>
+        <item name="listPreferredItemPaddingStart">?attr/dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingEnd">?attr/dialogPreferredPadding</item>
+        <item name="navigationBarColor">@android:color/transparent</item>
+        <item name="tabWidgetStyle">@style/Widget.DeviceDefault.Resolver.TabWidget</item>
+        <item name="iconfactoryIconSize">@dimen/resolver_icon_size</item>
+        <item name="iconfactoryBadgeSize">@dimen/resolver_badge_size</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.Chooser" parent="Theme.DeviceDefault.Resolver">
+        <item name="iconfactoryIconSize">@dimen/chooser_icon_size</item>
+        <item name="iconfactoryBadgeSize">@dimen/chooser_badge_size</item>
+    </style>
+
+</resources>
