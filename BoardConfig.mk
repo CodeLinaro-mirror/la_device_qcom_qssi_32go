@@ -124,8 +124,6 @@ endif
 
 BUILD_BROKEN_DUP_RULES := true
 
-#Enable VNDK Compliance
-BOARD_VNDK_VERSION:=current
 Q_BU_DISABLE_MODULE := true
 TARGET_USES_64_BIT_BINDER := true
 

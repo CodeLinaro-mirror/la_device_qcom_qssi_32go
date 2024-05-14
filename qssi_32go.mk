@@ -8,10 +8,6 @@ TARGET_BOOTLOADER_BOARD_NAME := qssi_32go
 # Skip VINTF checks for kernel configs since we do not have kernel source
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
-# Enable product partition Native I/F. It is automatically set to current if
-# the shipping API level for the target is greater than 29.
-PRODUCT_PRODUCT_VNDK_VERSION := current
-
 # Mismatch in the uses-library tags between build system and the manifest leads
 # to soong APK manifest_check tool errors. Enable the flag to fix this.
 RELAX_USES_LIBRARY_CHECK := true
@@ -263,9 +259,6 @@ endif
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
-
-#Enable vndk-sp Libraries
-PRODUCT_PACKAGES += vndk_package
 
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE:=true
 
