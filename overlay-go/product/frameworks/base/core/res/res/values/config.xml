@@ -155,7 +155,7 @@
     <integer name="config_twm">1</integer>
 
     <!-- Trigger TWM if battery level drops below this value -->
-    <integer name="config_autoTriggerTWMThreshold">5</integer>
+    <integer name="config_autoTriggerTWMThreshold">4</integer>
 
     <!-- The file path of default alarm ringtone for offloading. -->
     <string translatable="false" name="config_defaultOffloadAlarmRingtoneFilePath">/system/product/media/audio/offload/default_alarm_ringtone.wav</string>
