@@ -154,6 +154,9 @@
     <!-- enable TWM Power Off -->
     <integer name="config_twm">1</integer>
 
+    <!-- enable hibernate function -->
+    <integer name="config_hibernate">1</integer>
+
     <!-- Trigger TWM if battery level drops below this value -->
     <integer name="config_autoTriggerTWMThreshold">4</integer>
 
