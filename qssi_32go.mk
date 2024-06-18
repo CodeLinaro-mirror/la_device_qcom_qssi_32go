@@ -52,6 +52,12 @@ DONT_UNCOMPRESS_PRIV_APPS_DEXS := true
 
 $(call inherit-product, build/target/product/go_defaults.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackageGo.mk)
+# copy camera specific audio sound for go variant.
+PRODUCT_COPY_FILES += \
+		frameworks/base/data/sounds/effects/ogg/camera_click.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/camera_click.ogg \
+		frameworks/base/data/sounds/effects/ogg/camera_focus.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/camera_focus.ogg \
+		frameworks/base/data/sounds/effects/ogg/VideoRecord.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/VideoRecord.ogg \
+		frameworks/base/data/sounds/effects/ogg/VideoStop.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui/VideoStop.ogg
 
 DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go/device
 PRODUCT_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go/product
@@ -258,7 +264,7 @@ KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTAL
 
 ifneq ($(strip $(TARGET_BUILD_VARIANT)),user)
 PRODUCT_COPY_FILES += \
-    device/qcom/qssi_32go/init.qcom.testscripts.sh:$(TARGET_COPY_OUT_PRODUCT)/etc/init.qcom.testscripts.sh
+    device/qcom/qssi_32go/init.qcom.testscripts.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/init.qcom.testscripts.sh
 endif
 
 #Enable full treble flag
