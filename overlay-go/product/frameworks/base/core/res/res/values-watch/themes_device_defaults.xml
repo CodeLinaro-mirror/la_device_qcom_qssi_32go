@@ -54,4 +54,9 @@ easier.
         <item name="iconfactoryBadgeSize">@dimen/chooser_badge_size</item>
     </style>
 
+    <style name="Theme.DeviceDefault.Dialog.NoActionBar" parent="Theme.Material.Dialog.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+	<item name="android:windowActionBar">false</item>
+    </style>
+
 </resources>
