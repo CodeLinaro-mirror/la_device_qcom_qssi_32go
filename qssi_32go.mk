@@ -159,7 +159,9 @@ TARGET_USES_QCOM_BSP := false
 
 TARGET_USES_NQ_NFC := true
 
-
+# Set hardware type to watch
+PRODUCT_COPY_FILES += \
+	device/qcom/qssi_32go/wearable_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/wearable_core_hardware.xml
 # default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard,watch
 BOARD_FRP_PARTITION_NAME := frp
