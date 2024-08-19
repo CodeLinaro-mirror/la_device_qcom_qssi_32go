@@ -44,6 +44,11 @@ TARGET_SUPPORTS_WEAR_OS := false
 TARGET_SUPPORTS_WEAR_ANDROID := true
 ###################################################################################
 
+#Enable SecureElement to support  on LAW as its low ram device
+ifeq ($(TARGET_SUPPORTS_WEARABLES),true)
+PRODUCT_PACKAGES += SecureElement
+endif
+
 ##############################Go configs###########################################
 #Go variant flag
 TARGET_HAS_LOW_RAM := true
