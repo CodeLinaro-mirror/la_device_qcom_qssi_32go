@@ -33,6 +33,7 @@
         <!--<component>com.example.componentA</component>-->
         <!--<component>com.example.componentB</component>-->
         <component>com.android.internal.telephony.ServiceStateTracker</component>
+        <component>com.android.internal.telephony.subscription.SubscriptionManagerService</component>
         <component>com.android.internal.telephony.GsmCdmaPhone</component>
         <component>com.android.internal.telephony.data.PhoneSwitcher</component>
         <component>com.android.internal.telephony.IccPhoneBookInterfaceManager</component>
