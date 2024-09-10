@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    code is copied from <https://git.codelinaro.org/clo/la/platform/packages/apps/Mms/-/blob/f858b10244b7542fa7749ca9ca72df6a9558098d/res/values/dimens.xml>
+    which is under Apache 2.0 license.
+-->
+<!-- Copyright 2011 Google Inc.
+All Rights Reserved. -->
+<!--
+Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
+Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+SPDX-License-Identifier: BSD-3-Clause-Clear
+-->
+
+<resources>
+    <dimen name="message_block_padding_start">40dip</dimen>
+</resources>
