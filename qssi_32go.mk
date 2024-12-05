@@ -49,8 +49,13 @@ DONT_UNCOMPRESS_PRIV_APPS_DEXS := true
 $(call inherit-product, build/target/product/go_defaults.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackageGo.mk)
 
+# RRO configuration
+TARGET_USES_RRO := true
+
+ifneq ($(strip $(TARGET_USES_RRO)),true)
 DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go/device
 PRODUCT_PACKAGE_OVERLAYS += device/qcom/qssi_32go/overlay-go/product
+endif
 
 # Disable surfaceflinger prime_shader cache to improve post boot memory.
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += service.sf.prime_shader_cache=0
@@ -106,6 +111,10 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 endif
 #### Dynamic Partition Handling
 
+PRODUCT_PRODUCT_PROPERTIES += \
+    remote_provisioning.enable_rkpd=true \
+    remote_provisioning.hostname=remoteprovisioning.googleapis.com \
+
 PRODUCT_SOONG_NAMESPACES += \
     hardware/google/av \
     hardware/google/interfaces
@@ -138,7 +147,7 @@ PRODUCT_DEVICE := $(VENDOR_QTI_DEVICE)
 PRODUCT_BRAND := qti
 PRODUCT_MODEL := qssi system image for arm64
 
-PRODUCT_EXTRA_VNDK_VERSIONS := 30
+PRODUCT_EXTRA_VNDK_VERSIONS := 30 34
 
 #Initial bringup flags
 TARGET_USES_AOSP := false
@@ -278,6 +287,9 @@ AUDIO_FEATURE_ENABLED_DLKM := true
 else
 AUDIO_FEATURE_ENABLED_DLKM := false
 endif
+
+# Enable support for APEX updates
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Enable virtual A/B compression
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/android_t_baseline.mk)
