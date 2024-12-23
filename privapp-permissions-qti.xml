@@ -40,6 +40,16 @@ It allows additional grants on top of privapp-permissions-platform.xml
         <permission name="android.permission.WRITE_SECURE_SETTINGS" />
         <permission name="android.permission.MONITOR_INPUT" />
         <permission name="android.permission.READ_DEVICE_CONFIG" />
+        <permission name="android.permission.ACCESS_COARSE_LOCATION" />
+        <permission name="android.permission.ACCESS_NETWORK_STATE" />
+        <permission name="android.permission.READ_PRECISE_PHONE_STATE" />
+        <permission name="android.permission.READ_PHONE_STATE" />
+        <permission name="android.permission.GRANT_RUNTIME_PERMISSIONS" />
+        <permission name="android.permission.NEARBY_WIFI_DEVICES" />
+        <permission name="android.permission.ACCESS_WIFI_STATE" />
+        <permission name="android.permission.CHANGE_WIFI_STATE" />
+        <permission name="android.permission.CHANGE_BLUETOOTH_CONNECT" />
+        <permission name="android.permission.INTERACT_ACROSS_USERS" />
     </privapp-permissions>
     <privapp-permissions package="com.qualcomm.qti.weartech.settings">
         <permission name="android.permission.WRITE_SECURE_SETTINGS" />
