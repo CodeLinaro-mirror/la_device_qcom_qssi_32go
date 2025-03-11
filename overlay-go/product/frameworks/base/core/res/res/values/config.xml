@@ -140,7 +140,7 @@
         http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
 
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not specified -->
-    <string name="default_wallpaper_component" translatable="false">com.qualcomm.qti.weartech.watchface/com.qualcomm.qti.weartech.watchface.WatchFaceService</string>
+    <string name="default_wallpaper_component" translatable="false">com.qualcomm.qti.weartech.watchface/com.qualcomm.qti.weartech.watchface.screens.watchface.wallpaper.WatchWallpaperService</string>
 
     <!-- enable Offload -->
     <bool name="config_offloadEnabled">true</bool>
