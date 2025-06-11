@@ -163,6 +163,8 @@ PRODUCT_MODEL := qssi system image for arm64
 
 PRODUCT_EXTRA_VNDK_VERSIONS := 30 31 32 33
 
+PRODUCT_PACKAGES += qspa_system.rc qspa_default.rc
+
 #Initial bringup flags
 TARGET_USES_AOSP := false
 TARGET_USES_AOSP_FOR_AUDIO := false
