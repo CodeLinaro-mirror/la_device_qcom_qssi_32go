@@ -19,7 +19,7 @@ include device/qcom/iot-feature-config/iotfeatureconfig.mk
 endif
 
 #To be moved to iot-feature-config
-ifeq (($(TARGET_QCOM_IOT_LOW_RAM), true)
+ifeq ($(TARGET_QCOM_IOT_LOW_RAM), true)
 
 TARGET_TELEPHONY_DATA_ONLY := true
 
