@@ -38,6 +38,9 @@ SYSTEMEXT_SEPARATE_PARTITION_ENABLE ?= false
 #Go variant flag
 TARGET_HAS_LOW_RAM := true
 
+# Set target supports go variant flag
+TARGET_SUPPORTS_GO_VARIANT := true
+
 TARGET_SYSTEM_PROP := device/qcom/qssi_32go/system.prop
 
 # Enable DM file preopting to reduce first boot time
@@ -143,7 +146,7 @@ PRODUCT_DEVICE := $(VENDOR_QTI_DEVICE)
 PRODUCT_BRAND := qti
 PRODUCT_MODEL := qssi system image for arm64
 
-PRODUCT_EXTRA_VNDK_VERSIONS := 30 34
+PRODUCT_EXTRA_VNDK_VERSIONS := 34
 
 #Initial bringup flags
 TARGET_USES_AOSP := false
