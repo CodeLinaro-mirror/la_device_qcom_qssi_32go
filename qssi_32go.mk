@@ -131,11 +131,12 @@ $(call inherit-product, device/qcom/qssi_32go/common.mk)
 
 #Inherit all except heap growth limit from phone-xhdpi-2048-dalvik-heap.mk
 PRODUCT_PROPERTY_OVERRIDES  += \
-	dalvik.vm.heapstartsize=8m \
-	dalvik.vm.heapsize=512m \
+	dalvik.vm.heapstartsize=4m \
+	dalvik.vm.heapsize=128m \
 	dalvik.vm.heaptargetutilization=0.75 \
 	dalvik.vm.heapminfree=512k \
-	dalvik.vm.heapmaxfree=8m
+	dalvik.vm.heapmaxfree=2m \
+	dalvik.vm.heapgrowthlimit=64m
 
 
 PRODUCT_NAME := $(VENDOR_QTI_DEVICE)
