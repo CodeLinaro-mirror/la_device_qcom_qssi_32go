@@ -106,4 +106,7 @@
     <!-- MMS user agent prolfile url -->
     <string name="config_mms_user_agent_profile_url" translatable="false">
         http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
+
+    <!-- Enable or disable android.companion.virtual.VirtualDeviceManager. Enabled by default. -->
+    <bool name="config_enableVirtualDeviceManager">false</bool>
 </resources>
