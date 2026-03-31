@@ -63,6 +63,9 @@ endif
 # Disable surfaceflinger prime_shader cache to improve post boot memory.
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += service.sf.prime_shader_cache=0
 
+
+# Disabling GMS package.
+TARGET_NO_GMS_PACKAGES := true
 #########################End of Go configs########################################
 
 
