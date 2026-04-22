@@ -1012,3 +1012,7 @@ else
     $(warning bt_adv_audio dir is not present)
     SOONG_CONFIG_bredr_vs_btadva_bredr_or_btadva := bredr
 endif #ifneq "$(wildcard vendor/qcom/proprietary/commonsys/bt/bt_adv_audio)" ""
+
+ifeq ($(TARGET_SUPPORTS_WEAR_ANDROID), true)
+    $(call soong_config_set, qtiwearable, is_wearable_target, true)
+endif
